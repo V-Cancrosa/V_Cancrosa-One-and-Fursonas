@@ -26,6 +26,9 @@ Trzy strony tworzą jedno uniwersum i mają ten sam cienki pas na górze: **Post
 - Pas chowa się przy przewijaniu w dół, wraca przy przewijaniu w górę i mówi językiem strony.
 - Ukryte przejście do studia: pięć szybkich kliknięć w znak (punkt nad trzema kreskami) albo wpisanie na klawiaturze „studio”.
   To ukrycie, nie zabezpieczenie — kto zna adres, wejdzie. Studio ma `noindex`, więc wyszukiwarki go nie pokazują.
+- Licznik odwiedzin: pas sam dokłada skrypt Cloudflare Web Analytics (bez ciasteczek), ale tylko na `v-cancrosa.github.io`
+  i nigdy w studiu. Bramka (repo `v-cancrosa.github.io`) ma ten sam skrypt wpisany na stałe.
+  Wyniki: panel Cloudflare → Web Analytics → v-cancrosa.github.io.
 
 Efekty zaadaptowane z CodePen (MIT) i ich autorzy: `CREDITS.md`. W kodzie każda adaptacja ma komentarz ze źródłem.
 
