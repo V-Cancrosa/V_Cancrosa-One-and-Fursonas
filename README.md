@@ -25,7 +25,8 @@ Trzy strony tworzą jedno uniwersum i mają ten sam cienki pas na górze: **Post
 - Na stronie: `<link rel="stylesheet" href="…/uni/universe.css">` i `<script src="…/uni/universe.js" data-site="fursony|entertainment|studio" defer></script>`.
 - Pas chowa się przy przewijaniu w dół, wraca przy przewijaniu w górę i mówi językiem strony.
 - Ukryte przejście do studia: pięć szybkich kliknięć w znak (punkt nad trzema kreskami) albo wpisanie na klawiaturze „studio”.
-  To ukrycie, nie zabezpieczenie — kto zna adres, wejdzie. Studio ma `noindex`, więc wyszukiwarki go nie pokazują.
+  Samo studio jest zamknięte: stoi na Cloudflare pod `https://studio.vulpescancrosa.workers.dev/` za Cloudflare Access
+  (wpuszcza tylko właściciela, jednorazowym kodem z e-maila). Szczegóły w README repo V_Cancrosa-YouTube-Create.
 - Licznik odwiedzin: pas sam dokłada skrypt Cloudflare Web Analytics (bez ciasteczek), ale tylko na `v-cancrosa.github.io`
   i nigdy w studiu. Bramka (repo `v-cancrosa.github.io`) ma ten sam skrypt wpisany na stałe.
   Wyniki: panel Cloudflare → Web Analytics → v-cancrosa.github.io.
