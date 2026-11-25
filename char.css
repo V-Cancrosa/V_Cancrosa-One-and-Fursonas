@@ -67,3 +67,10 @@ dialog.lightbox[open]::backdrop { animation: lb-fade .3s ease; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-delay: 0s !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   [data-reveal] { opacity: 1; transform: none; }
 }
+
+/* Skrajne powiększenia przeglądarki.
+   Zoom mocno w dół (np. 25%): pierwszy ekran nie rośnie bez końca razem z oknem — najwyżej ok. 1000 px.
+   Zoom mocno w górę (np. 300–500%) albo telefon w poziomie: przyklejona nawigacja zajmowałaby pół ekranu,
+   więc odjeżdża razem z treścią. */
+:root .hero, :root .sky { min-height: min(100svh, 64rem); }
+@media (max-height: 26rem) { :root .nav { position: absolute; } }

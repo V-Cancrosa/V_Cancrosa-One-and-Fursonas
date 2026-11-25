@@ -44,6 +44,8 @@
   </a>
   <nav aria-label="Sections">
     <a href="#postacie"><span lang="en">Characters</span><span lang="pl">Postacie</span></a>
+    <a href="#konto"><span lang="en">Account</span><span lang="pl">Konto</span></a>
+    <a href="#artysci"><span lang="en">Artists</span><span lang="pl">Artyści</span></a>
     <a href="#projekty"><span lang="en">Projects</span><span lang="pl">Projekty</span></a>
     <a href="#kontakt"><span lang="en">Contact</span><span lang="pl">Kontakt</span></a>
   </nav>
@@ -241,13 +243,48 @@
     <div class="wrap">
       <div class="sec-head" data-reveal>
         <p class="kicker">@vincent_cancrosa</p>
-        <h2 id="konto-h"><span lang="en">Who's on Vince's account?</span><span lang="pl">Kto jest na koncie Vince'a?</span></h2>
-        <p class="intro" lang="en">He locks everything — except his phone. Read the post, guess who wrote it.</p>
-        <p class="intro" lang="pl">Zamyka wszystko — poza telefonem. Przeczytaj wpis i zgadnij, kto go napisał.</p>
+        <h2 id="konto-h"><span lang="en">One account, four voices</span><span lang="pl">Jedno konto, cztery głosy</span></h2>
+        <p class="intro" lang="en">Vince locks everything — except his phone. Here's how everyone ends up on his Instagram.</p>
+        <p class="intro" lang="pl">Vince zamyka wszystko — poza telefonem. Tak każde z nich trafia na jego Instagram.</p>
+      </div>
+      <div class="voices">
+          <article class="voice" style="--c:#e3a43f" data-reveal>
+            <header><img src="img/vince-thumb.webp" alt="" width="400" height="300" loading="lazy"><div><b>Vince</b><span lang="en">owner of the account</span><span lang="pl">właściciel konta</span></div></header>
+            <p lang="en">It's my account. I post the commissions, credit every artist and read each caption twice before it goes up. The bank, the cloud, the router — all locked. The phone, apparently, is a public library.</p>
+            <p lang="pl">To moje konto. Wrzucam zamówione prace, podpisuję każdego artystę i czytam każdy opis dwa razy, zanim pójdzie. Bank, chmura, router — wszystko zamknięte. Telefon, jak się okazuje, to biblioteka publiczna.</p>
+            <p class="voice-sig">— Vince. 001.</p>
+          </article>
+          <article class="voice" style="--c:#4f8ae8" data-reveal>
+            <header><img src="img/chip-thumb.webp" alt="" width="400" height="300" loading="lazy"><div><b>Chip</b><span lang="en">logs in without asking</span><span lang="pl">loguje się bez pytania</span></div></header>
+            <p lang="en">He leaves it on the counter, unlocked, every single morning. I post what he'd spend a week overthinking. Then I make breakfast, so nobody can stay mad. Works every time.</p>
+            <p lang="pl">Zostawia go na blacie, odblokowany, każdego ranka. Wrzucam to, co on by rozkminiał tydzień. Potem robię śniadanie, żeby nikt nie mógł się gniewać. Działa za każdym razem.</p>
+            <p class="voice-sig">— Chip 🥚</p>
+          </article>
+          <article class="voice" style="--c:#ff2e88" data-reveal>
+            <header><img src="img/ragnar-thumb.webp" alt="" width="400" height="300" loading="lazy"><div><b>Ragnar</b><span lang="en">borrows it at night</span><span lang="pl">pożycza je nocą</span></div></header>
+            <p lang="en">Borrowing the account. Usually after a set, usually when I've got something too big to keep in. He never changes the password. I think that's on purpose.</p>
+            <p lang="pl">Pożyczam konto. Zwykle po secie, zwykle kiedy mam w sobie coś za dużego, żeby to trzymać. On nigdy nie zmienia hasła. Chyba celowo.</p>
+            <p class="voice-sig">— R. 🖤</p>
+          </article>
+          <article class="voice" style="--c:#e6b23a" data-reveal>
+            <header><img src="img/toro-thumb.webp" alt="" width="400" height="300" loading="lazy"><div><b>Toro</b><span lang="en">writes when Chip hands him the phone</span><span lang="pl">pisze, gdy Chip poda mu telefon</span></div></header>
+            <p lang="en">I only write when Chip hands me the phone. A river doesn't ask whose banks these are. I say what's needed and put it back exactly where I found it.</p>
+            <p lang="pl">Piszę tylko wtedy, gdy Chip poda mi telefon. Rzeka nie pyta, czyje są brzegi. Mówię, co trzeba, i odkładam telefon dokładnie tam, gdzie leżał.</p>
+            <p class="voice-sig">— Toro 🏮</p>
+          </article>
       </div>
 
-      <div class="account-grid">
-      <div class="feed" data-reveal>
+      <div class="quiz-card" data-reveal>
+        <div>
+          <p class="kicker"><span lang="en">Game · 9 real posts</span><span lang="pl">Gra · 9 prawdziwych wpisów</span></p>
+          <h3><span lang="en">Who wrote it?</span><span lang="pl">Kto to napisał?</span></h3>
+          <p lang="en">Read a post from the account and guess who was holding the phone.</p>
+          <p lang="pl">Przeczytaj wpis z konta i zgadnij, kto trzymał telefon.</p>
+        </div>
+        <button type="button" class="btn" id="quizOpen" aria-expanded="false" aria-controls="quiz"></button>
+      </div>
+      <div class="quiz" id="quiz" hidden>
+      <div class="feed">
         <article class="post" id="post">
           <header class="post-head"><img src="img/vince-thumb.webp" alt="" width="400" height="300"><b>vincent_cancrosa</b><span class="mono" id="postNo"></span></header>
           <p class="post-text" id="postText"></p>
@@ -261,23 +298,131 @@
         </div>
         <div class="post-foot"><span class="mono" id="score"></span><button type="button" class="btn ghost" id="nextPost"></button></div>
       </div>
+      </div>
+    </div>
+  </section>
 
-      <div class="artists" id="artysci" data-reveal>
+  <!-- ================= ARTYŚCI ================= -->
+  <section class="sec artists-sec" id="artysci" aria-labelledby="artysci-h">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
         <p class="kicker"><span lang="en">Drawn by · thank you</span><span lang="pl">Narysowali · dziękuję</span></p>
-        <ul class="artist-list">
-          <li><b>Ash (SpicyMustelid)</b><span lang="en">Vince — reference sheet</span><span lang="pl">Vince — ref sheet</span><span class="alinks"><a href="https://bsky.app/profile/spicymustelidz.bsky.social">Bluesky</a><a href="https://www.instagram.com/spicemarten/">Instagram</a><a class="tip" href="https://ko-fi.com/spicymustelid/commissions"><span lang="en">Ko-fi · commissions ♥</span><span lang="pl">Ko-fi · zamówienia ♥</span></a></span></li>
-          <li><b>Chilibi</b><span lang="en">Chip — adopted design</span><span lang="pl">Chip — adoptowany projekt</span><span class="alinks"><a href="https://www.furaffinity.net/gallery/chilibi/">FurAffinity</a><a href="https://ych.art/user/chilibi">YCH</a><a href="https://chilibi.carrd.co/">Carrd</a><a href="https://www.instagram.com/chilibi.png/">Instagram</a><a href="https://x.com/chilibii">X</a><a href="https://toyhou.se/chilibi">Toyhouse</a><a href="https://www.reddit.com/user/Glittering-Amount-68/">Reddit</a><a class="tip" href="https://www.paypal.com/donate/?hosted_button_id=E227Q3LJ3SKNS"><span lang="en">Tip ♥</span><span lang="pl">Napiwek ♥</span></a></span></li>
-          <li class="warn"><b>ivyfox_ ⚠︎</b><span lang="en">Ragnar · the kitchen morning</span><span lang="pl">Ragnar · poranek w kuchni</span><small lang="en">account taken over — no link</small><small lang="pl">konto przejęte — bez linku</small><span class="alinks"><a href="#uwaga"><span lang="en">read the note</span><span lang="pl">przeczytaj uwagę</span></a></span></li>
-          <li><b>Ritsu</b><span lang="en">Toro — adopted design</span><span lang="pl">Toro — adoptowany projekt</span><span class="alinks"><a href="https://www.instagram.com/ritsu_fur1/">Instagram</a></span></li>
-          <li><b>amanda_rice910</b><span lang="en">Vince · The Night Paw</span><span lang="pl">Vince · The Night Paw</span><span class="alinks"><a href="https://www.instagram.com/amanda_rice910/">Instagram</a></span></li>
-          <li><b>janet_arts2</b><span lang="en">Vince · Philosopher</span><span lang="pl">Vince · Philosopher</span><span class="alinks"><a href="https://www.instagram.com/janet_arts2/">Instagram</a></span></li>
-          <li><b>furlynx_</b><span lang="en">Fusk — Chip's D&amp;D character</span><span lang="pl">Fusk — postać Chipa do D&amp;D</span><span class="alinks"><a href="https://www.instagram.com/furlynx_/">Instagram</a><a href="https://furlynx.carrd.co/">Carrd</a><a href="https://www.reddit.com/user/Greedy_Count_498/">Reddit</a></span></li>
-          <li><b>Nova</b><span lang="en">Vince — mountains, waves, caves, forest</span><span lang="pl">Vince — góry, fale, jaskinie, las</span><small class="soon" lang="en">Instagram nova_thewolfie1 is inactive — Reddit works</small><small class="soon" lang="pl">Instagram nova_thewolfie1 nieaktywny — Reddit działa</small><span class="alinks"><a href="https://www.reddit.com/user/emberknox21/">Reddit · emberknox21</a><a href="#uwaga"><span lang="en">about Instagram</span><span lang="pl">o Instagramie</span></a></span></li>
-          <li><b>Bamboopanda101 · ArturoAthens</b><span lang="en">Vince's icons · Ecniv</span><span lang="pl">ikony Vince'a · Ecniv</span><span class="alinks"><a href="https://www.reddit.com/user/Bamboopanda101/">Reddit</a><a href="https://x.com/ArturoAthens">X</a></span></li>
-          <li><b>Hai Brush Strokes</b><span lang="en">Vince · the waterfall</span><span lang="pl">Vince · wodospad</span><span class="alinks"><a href="https://x.com/haibrushstrokes">X</a></span></li>
-          <li><b>jimmyfursuits</b><span lang="en">Vince · chibi stickers</span><span lang="pl">Vince · naklejki chibi</span><span class="alinks"><a href="https://www.tiktok.com/@jimmyfursuits">TikTok</a></span></li>
-          <li><b>privv._.lupy</b><span lang="en">Vince's ID card design</span><span lang="pl">projekt dowodu Vince'a</span><span class="alinks"><a href="https://www.instagram.com/privv._.lupy/">Instagram</a></span></li>
-        </ul>
+        <h2 id="artysci-h"><span lang="en">Artists</span><span lang="pl">Artyści</span></h2>
+        <p class="intro" lang="en">Without them, these characters would only be descriptions. Every one of them is worth following — and commissioning.</p>
+        <p class="intro" lang="pl">Bez nich te postacie byłyby tylko opisami. Każdą i każdego z nich warto obserwować — i u nich zamawiać.</p>
+      </div>
+      <ul class="art-grid" data-reveal>
+          <li class="art-card">
+            <img class="art-thumb" src="img/art/ash.webp" width="640" height="480" loading="lazy" alt="">
+            <div class="art-body">
+              <b class="art-name">Ash (SpicyMustelid)</b>
+              <span class="art-what"><span lang="en">Vince — reference sheet</span><span lang="pl">Vince — ref sheet</span></span>
+              <span class="alinks"><a href="https://bsky.app/profile/spicymustelidz.bsky.social">Bluesky</a><a href="https://www.instagram.com/spicemarten/">Instagram</a><a class="tip" href="https://ko-fi.com/spicymustelid/commissions"><span lang="en">Ko-fi · commissions ♥</span><span lang="pl">Ko-fi · zamówienia ♥</span></a></span>
+              <a class="art-where" href="vince.html#spec"><span lang="en">See the work →</span><span lang="pl">Zobacz pracę →</span></a>
+            </div>
+          </li>
+          <li class="art-card">
+            <img class="art-thumb" src="img/art/chilibi.webp" width="640" height="480" loading="lazy" alt="">
+            <div class="art-body">
+              <b class="art-name">Chilibi</b>
+              <span class="art-what"><span lang="en">Chip — adopted design</span><span lang="pl">Chip — adoptowany projekt</span></span>
+              <span class="alinks"><a href="https://www.furaffinity.net/gallery/chilibi/">FurAffinity</a><a href="https://ych.art/user/chilibi">YCH</a><a href="https://chilibi.carrd.co/">Carrd</a><a href="https://www.instagram.com/chilibi.png/">Instagram</a><a href="https://x.com/chilibii">X</a><a href="https://toyhou.se/chilibi">Toyhouse</a><a href="https://www.reddit.com/user/Glittering-Amount-68/">Reddit</a><a class="tip" href="https://www.paypal.com/donate/?hosted_button_id=E227Q3LJ3SKNS"><span lang="en">Tip ♥</span><span lang="pl">Napiwek ♥</span></a></span>
+              <a class="art-where" href="chip.html"><span lang="en">See the work →</span><span lang="pl">Zobacz pracę →</span></a>
+            </div>
+          </li>
+          <li class="art-card warn">
+            <img class="art-thumb" src="img/art/ivyfox.webp" width="640" height="480" loading="lazy" alt="">
+            <div class="art-body">
+              <b class="art-name">ivyfox_ ⚠︎</b>
+              <span class="art-what"><span lang="en">Ragnar · the kitchen morning</span><span lang="pl">Ragnar · poranek w kuchni</span></span>
+              <small lang="en">account taken over — no link</small><small lang="pl">konto przejęte — bez linku</small>
+              <span class="alinks"><a href="#uwaga"><span lang="en">read the note</span><span lang="pl">przeczytaj uwagę</span></a></span>
+              <a class="art-where" href="ragnar.html"><span lang="en">See the work →</span><span lang="pl">Zobacz pracę →</span></a>
+            </div>
+          </li>
+          <li class="art-card">
+            <img class="art-thumb" src="img/art/ritsu.webp" width="640" height="480" loading="lazy" alt="">
+            <div class="art-body">
+              <b class="art-name">Ritsu</b>
+              <span class="art-what"><span lang="en">Toro — adopted design</span><span lang="pl">Toro — adoptowany projekt</span></span>
+              <span class="alinks"><a href="https://www.instagram.com/ritsu_fur1/">Instagram</a></span>
+              <a class="art-where" href="toro.html"><span lang="en">See the work →</span><span lang="pl">Zobacz pracę →</span></a>
+            </div>
+          </li>
+          <li class="art-card">
+            <img class="art-thumb" src="img/art/amanda.webp" width="640" height="480" loading="lazy" alt="">
+            <div class="art-body">
+              <b class="art-name">amanda_rice910</b>
+              <span class="art-what"><span lang="en">Vince · The Night Paw</span><span lang="pl">Vince · The Night Paw</span></span>
+              <span class="alinks"><a href="https://www.instagram.com/amanda_rice910/">Instagram</a></span>
+              <a class="art-where" href="vince.html#gallery"><span lang="en">See the work →</span><span lang="pl">Zobacz pracę →</span></a>
+            </div>
+          </li>
+          <li class="art-card">
+            <img class="art-thumb" src="img/art/janet.webp" width="640" height="480" loading="lazy" alt="">
+            <div class="art-body">
+              <b class="art-name">janet_arts2</b>
+              <span class="art-what"><span lang="en">Vince · Philosopher</span><span lang="pl">Vince · Philosopher</span></span>
+              <span class="alinks"><a href="https://www.instagram.com/janet_arts2/">Instagram</a></span>
+              <a class="art-where" href="vince.html#gallery"><span lang="en">See the work →</span><span lang="pl">Zobacz pracę →</span></a>
+            </div>
+          </li>
+          <li class="art-card">
+            <img class="art-thumb" src="img/art/furlynx.webp" width="640" height="480" loading="lazy" alt="">
+            <div class="art-body">
+              <b class="art-name">furlynx_</b>
+              <span class="art-what"><span lang="en">Fusk — Chip's D&amp;D character</span><span lang="pl">Fusk — postać Chipa do D&amp;D</span></span>
+              <span class="alinks"><a href="https://www.instagram.com/furlynx_/">Instagram</a><a href="https://furlynx.carrd.co/">Carrd</a><a href="https://www.reddit.com/user/Greedy_Count_498/">Reddit</a></span>
+              <a class="art-where" href="chip.html#dnd"><span lang="en">See the work →</span><span lang="pl">Zobacz pracę →</span></a>
+            </div>
+          </li>
+          <li class="art-card">
+            <img class="art-thumb" src="img/art/nova.webp" width="640" height="480" loading="lazy" alt="">
+            <div class="art-body">
+              <b class="art-name">Nova</b>
+              <span class="art-what"><span lang="en">Vince — mountains, waves, caves, forest</span><span lang="pl">Vince — góry, fale, jaskinie, las</span></span>
+              <small class="soon" lang="en">Instagram nova_thewolfie1 is inactive — Reddit works</small><small class="soon" lang="pl">Instagram nova_thewolfie1 nieaktywny — Reddit działa</small>
+              <span class="alinks"><a href="https://www.reddit.com/user/emberknox21/">Reddit · emberknox21</a><a href="#uwaga"><span lang="en">about Instagram</span><span lang="pl">o Instagramie</span></a></span>
+              <a class="art-where" href="vince.html#gallery"><span lang="en">See the work →</span><span lang="pl">Zobacz pracę →</span></a>
+            </div>
+          </li>
+          <li class="art-card">
+            <img class="art-thumb" src="img/art/bamboo.webp" width="640" height="480" loading="lazy" alt="">
+            <div class="art-body">
+              <b class="art-name">Bamboopanda101 · ArturoAthens</b>
+              <span class="art-what"><span lang="en">Vince's icons · Ecniv</span><span lang="pl">ikony Vince'a · Ecniv</span></span>
+              <span class="alinks"><a href="https://www.reddit.com/user/Bamboopanda101/">Reddit</a><a href="https://x.com/ArturoAthens">X</a></span>
+              <a class="art-where" href="vince.html#gallery"><span lang="en">See the work →</span><span lang="pl">Zobacz pracę →</span></a>
+            </div>
+          </li>
+          <li class="art-card">
+            <img class="art-thumb" src="img/art/hai.webp" width="640" height="480" loading="lazy" alt="">
+            <div class="art-body">
+              <b class="art-name">Hai Brush Strokes</b>
+              <span class="art-what"><span lang="en">Vince · the waterfall</span><span lang="pl">Vince · wodospad</span></span>
+              <span class="alinks"><a href="https://x.com/haibrushstrokes">X</a></span>
+              <a class="art-where" href="vince.html#gallery"><span lang="en">See the work →</span><span lang="pl">Zobacz pracę →</span></a>
+            </div>
+          </li>
+          <li class="art-card">
+            <img class="art-thumb" src="img/art/jimmy.webp" width="640" height="480" loading="lazy" alt="">
+            <div class="art-body">
+              <b class="art-name">jimmyfursuits</b>
+              <span class="art-what"><span lang="en">Vince · chibi stickers</span><span lang="pl">Vince · naklejki chibi</span></span>
+              <span class="alinks"><a href="https://www.tiktok.com/@jimmyfursuits">TikTok</a></span>
+              <a class="art-where" href="vince.html#gallery"><span lang="en">See the work →</span><span lang="pl">Zobacz pracę →</span></a>
+            </div>
+          </li>
+          <li class="art-card">
+            <img class="art-thumb" src="img/art/lupy.webp" width="640" height="480" loading="lazy" alt="">
+            <div class="art-body">
+              <b class="art-name">privv._.lupy</b>
+              <span class="art-what"><span lang="en">Vince's ID card design</span><span lang="pl">projekt dowodu Vince'a</span></span>
+              <span class="alinks"><a href="https://www.instagram.com/privv._.lupy/">Instagram</a></span>
+              <a class="art-where" href="vince.html#gallery"><span lang="en">See the work →</span><span lang="pl">Zobacz pracę →</span></a>
+            </div>
+          </li>
+      </ul>
         <div class="acct-notice" id="uwaga">
           <p class="kicker">⚠︎ <span lang="en">Two accounts to watch out for</span><span lang="pl">Dwa konta, na które trzeba uważać</span></p>
           <p lang="en"><b>ivyfox_</b> — her Instagram has been taken over by someone else. Her art stays credited here, but there's no link until she gets the account back. Please don't follow it, buy anything from it or send it anything.</p>
@@ -298,9 +443,6 @@
               <p class="form-status" id="formStatus" role="status"></p>
             </form>
           </details>
-        </div>
-      </div>
-      </div>
     </div>
   </section>
 
@@ -829,6 +971,19 @@
       .forEach(f => document.fonts.load(f, "AaŁłóę").catch(() => {}));
   }, 300));
 
+  // ---------- Gra „kto to napisał?” — otwiera się dopiero na życzenie ----------
+  const quiz = document.getElementById("quiz"), quizOpen = document.getElementById("quizOpen");
+  function renderQuizBtn() {
+    const open = !quiz.hidden;
+    quizOpen.setAttribute("aria-expanded", String(open));
+    quizOpen.textContent = open ? t({ en: "Hide the game", pl: "Schowaj grę" }) : t({ en: "Play", pl: "Zagraj" });
+  }
+  quizOpen.addEventListener("click", () => {
+    quiz.hidden = !quiz.hidden;
+    renderQuizBtn();
+    if (!quiz.hidden) quiz.querySelector("#guess button").focus({ preventScroll: true });
+  });
+
   // ---------- Kto jest na koncie Vince'a? ----------
   const SIG = { vince: "— Vince. 001.", ragnar: "— R. 🖤", chip: "— Chip 🥚", toro: "— Toro 🏮" };
   const ART = {
@@ -964,6 +1119,7 @@
     renderStage();
     renderPost();
     renderForm();
+    renderQuizBtn();
     document.getElementById("rosterHint").textContent = hoverable
       ? t({ en: "Hover to preview · click to enter", pl: "Najedź, żeby podejrzeć · kliknij, żeby wejść" })
       : t({ en: "Tap to preview · tap again to enter", pl: "Stuknij, żeby podejrzeć · stuknij jeszcze raz, żeby wejść" });
