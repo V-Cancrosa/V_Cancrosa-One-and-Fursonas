@@ -274,6 +274,44 @@
           </article>
       </div>
 
+      <!-- Z konta: prawdziwe posty z Instagrama. Do kliknięcia to zwykłe karty z cytatem;
+           skrypt Instagrama (Meta, ciasteczka) ładuje się dopiero na życzenie i podmienia je na embedy.
+           Nowy post: skopiuj <figure class="ig-post"> i zmień adres w data-instgrm-permalink i href.
+           Cytaty mają lang="en-US", nie "en" — mają być widoczne w obu językach strony. -->
+      <div class="ig" data-reveal>
+        <div class="ig-bar">
+          <div>
+            <p class="kicker"><span lang="en">From the account · straight from Instagram</span><span lang="pl">Z konta · prosto z Instagrama</span></p>
+            <p lang="en">The real posts. They load only when you ask — Instagram (Meta) may then set its own cookies.</p>
+            <p lang="pl">Prawdziwe posty. Ładują się dopiero, gdy o to poprosisz — Instagram (Meta) może wtedy zapisać własne ciasteczka.</p>
+          </div>
+          <button type="button" class="btn" id="igLoad"></button>
+        </div>
+        <div class="ig-posts">
+          <figure class="ig-post" style="--c:#e3a43f">
+            <blockquote class="instagram-media ig-face" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/DV6nS6ZALlP/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14">
+              <a href="https://www.instagram.com/p/DV6nS6ZALlP/">
+                <span class="ig-who"><img src="img/vince-thumb.webp" alt="" width="400" height="300" loading="lazy"><b>vincent_cancrosa</b></span>
+                <span class="ig-quote" lang="en-US">“Hello my dear friends. Yep. That's me, Vincent Cancrosa aka Vince &amp; I have to say that SpicyMustelid absolutely won me over.”</span>
+                <span class="ig-open"><span lang="en">Open on Instagram ↗</span><span lang="pl">Otwórz na Instagramie ↗</span></span>
+              </a>
+            </blockquote>
+            <figcaption><span lang="en">Vince introduces himself · art:</span><span lang="pl">Vince się przedstawia · art:</span> <a href="#artysci">Ash (SpicyMustelid)</a></figcaption>
+          </figure>
+          <figure class="ig-post" style="--c:#ff2e88">
+            <blockquote class="instagram-media ig-face" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/DXL45stgH5U/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14">
+              <a href="https://www.instagram.com/p/DXL45stgH5U/">
+                <span class="ig-who"><img src="img/vince-thumb.webp" alt="" width="400" height="300" loading="lazy"><b>vincent_cancrosa</b></span>
+                <span class="ig-quote" lang="en-US">“Hi. Vincent here. Meet my boyfriend. […] Bold and boisterous, but pure heart.”</span>
+                <span class="ig-open"><span lang="en">Open on Instagram ↗</span><span lang="pl">Otwórz na Instagramie ↗</span></span>
+              </a>
+            </blockquote>
+            <figcaption><span lang="en">Vince introduces Ragnar · art:</span><span lang="pl">Vince przedstawia Ragnara · art:</span> ivyfox_
+              <a class="ig-warn" href="#uwaga">⚠︎ <span lang="en">this account was hacked — don't message it</span><span lang="pl">to konto przejęto — nie pisz na nie</span></a></figcaption>
+          </figure>
+        </div>
+      </div>
+
       <div class="quiz-card" data-reveal>
         <div>
           <p class="kicker"><span lang="en">Game · 9 real posts</span><span lang="pl">Gra · 9 prawdziwych wpisów</span></p>
@@ -984,6 +1022,34 @@
     if (!quiz.hidden) quiz.querySelector("#guess button").focus({ preventScroll: true });
   });
 
+  // ---------- Z konta: posty z Instagrama, dopiero na życzenie (skrypt Mety ustawia ciasteczka) ----------
+  const igLoad = document.getElementById("igLoad");
+  let igState = "idle"; // idle | loading | done | err
+  function renderIg() {
+    igLoad.disabled = igState === "loading" || igState === "done";
+    igLoad.textContent = t({
+      idle: { en: "Load the posts", pl: "Załaduj posty" }, loading: { en: "Loading…", pl: "Ładuję…" },
+      done: { en: "Loaded", pl: "Załadowane" }, err: { en: "Didn't load — try again", pl: "Nie wyszło — spróbuj jeszcze raz" },
+    }[igState]);
+  }
+  function loadIg() {
+    if (igState === "loading" || igState === "done") return;
+    igState = "loading"; renderIg();
+    try { sessionStorage.setItem("ig-ok", "1"); } catch (e) {}
+    const done = () => { if (window.instgrm) window.instgrm.Embeds.process(); igState = "done"; renderIg(); };
+    if (window.instgrm) return done();
+    const s = document.createElement("script");
+    s.async = true;
+    s.src = "https://www.instagram.com/embed.js";
+    s.onload = done;
+    s.onerror = () => { s.remove(); igState = "err"; renderIg(); };
+    document.body.appendChild(s);
+  }
+  igLoad.addEventListener("click", loadIg);
+  renderIg();
+  // W tej samej karcie przeglądarki raz wyrażona zgoda obowiązuje do końca wizyty
+  try { if (sessionStorage.getItem("ig-ok")) loadIg(); } catch (e) {}
+
   // ---------- Kto jest na koncie Vince'a? ----------
   const SIG = { vince: "— Vince. 001.", ragnar: "— R. 🖤", chip: "— Chip 🥚", toro: "— Toro 🏮" };
   const ART = {
@@ -1120,6 +1186,7 @@
     renderPost();
     renderForm();
     renderQuizBtn();
+    renderIg();
     document.getElementById("rosterHint").textContent = hoverable
       ? t({ en: "Hover to preview · click to enter", pl: "Najedź, żeby podejrzeć · kliknij, żeby wejść" })
       : t({ en: "Tap to preview · tap again to enter", pl: "Stuknij, żeby podejrzeć · stuknij jeszcze raz, żeby wejść" });
